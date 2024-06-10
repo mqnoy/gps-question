@@ -11,4 +11,8 @@ module.exports = {
         password: process.env.DB_PASSWORD || 'postgres',
         database: process.env.DB_NAME || 'gps_question_db',
     },
+    postgresUrl: {
+        dialect: 'postgres',
+        url: process.env.POSTGRES_URL || '',
+    },
 }

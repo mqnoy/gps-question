@@ -1,7 +1,9 @@
 const path = require("path");
 
+require('dotenv').config()
+
 module.exports = {
-  "env": "db",
+  "env": process.env.MIGRATION_ENV || 'db',
   "config": path.resolve("migrations/config.js"),
   "migrations-path": path.resolve("migrations/scripts"),
   "seeders-path": path.resolve("migrations/seeders")

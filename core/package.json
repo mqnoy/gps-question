@@ -7,7 +7,7 @@
   "scripts": {
     "app:setup": "yarn sequelize db:create && yarn sequelize db:migrate",
     "app:reset": "yarn sequelize db:drop",
-    "db:sync": "yarn sequelize db:migrate",
+    "db:sync": "yarn dotenv -e .env yarn sequelize db:migrate",
     "build": "yarn tsc",
     "dev": "yarn dotenv -e .env  yarn ts-node src/index.ts --transpile-onl",
     "start": "NODE_ENV=production node dist/index.js",
