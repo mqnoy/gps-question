@@ -1,0 +1,15 @@
+services:
+  gq_db:
+    image: postgres:alpine3.19
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: gps-question-db
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  pg-data:
