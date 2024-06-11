@@ -1,17 +1,18 @@
 import { Sequelize } from 'sequelize'
 import { EnvConfig } from './index'
 
-let options: Sequelize
-
-if (EnvConfig.postgresUrl) {
-    options = new Sequelize(EnvConfig.postgresUrl, {
-        dialect: 'postgres',
-    })
-} else {
-    options = new Sequelize(EnvConfig.dbName, EnvConfig.dbUser, EnvConfig.dbPassword, {
-        host: EnvConfig.dbHost,
-        dialect: 'postgres',
-    })
-}
-
-export const sequelizeConnection = options
+export const sequelizeConnection = new Sequelize({
+    database: EnvConfig.dbName,
+    username: EnvConfig.dbUser,
+    password: EnvConfig.dbPassword,
+    host: EnvConfig.dbHost,
+    port: EnvConfig.dbPort,
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+            ca: EnvConfig.postgresCA,
+        },
+    },
+})

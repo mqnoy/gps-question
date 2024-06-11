@@ -10,9 +10,11 @@ module.exports = {
         username: process.env.DB_USERNAME || 'postgres',
         password: process.env.DB_PASSWORD || 'postgres',
         database: process.env.DB_NAME || 'gps_question_db',
-    },
-    postgresUrl: {
-        dialect: 'postgres',
-        url: process.env.POSTGRES_URL || '',
+        dialectOptions: {
+            bigNumberStrings: true,
+            ssl: {
+                ca: process.env.POSTGRES_CA,
+            },
+        },
     },
 }

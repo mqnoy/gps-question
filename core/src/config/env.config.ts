@@ -10,5 +10,5 @@ export const EnvConfig = {
     jwtSecret: process.env.JWT_SECRET,
     jwtAccessTknExpiry: Number(process.env.JWT_ACCESS_TOKEN_EXPIRY || '86400'),
     jwtRefreshTknExpiry: Number(process.env.JWT_REFRESH_TOKEN_EXPIRY || '604800'),
-    postgresUrl: process.env.POSTGRES_URL || '',
+    postgresCA: process.env.POSTGRES_CA || '',
 }
