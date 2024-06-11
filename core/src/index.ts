@@ -21,6 +21,10 @@ const App = (): express.Application => {
     app.use(userController.route)
     app.use(gpsController.route)
 
+    app.get('/', (_req, res, _next) => {
+        res.status(HttpStatus.OK).send('ok')
+    })
+
     //fallback url
     app.all('*', (req, _res, _next) => {
         throw new HttpException(`can't find ${req.originalUrl}`, HttpStatus.NOT_FOUND)
